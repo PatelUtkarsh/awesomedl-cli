@@ -1,4 +1,5 @@
-import urllib
+import six.moves.urllib as urllib
+import six
 import re
 import webbrowser
 import xmltodict
@@ -9,11 +10,12 @@ def extract_download_link(link):
 	start = link.find('url/') + 4
 	return link[start:]
 
-url = "http://awesomedl.ru/?" + urllib.urlencode({'feed':'rss2','s':raw_input("Please enter Show name: ")})
-searchpage = urllib.urlopen(url).read()
+show_name=six.moves.input("Please enter Show name: ")
+url = "http://awesomedl.ru/?" + urllib.parse.urlencode({'feed':'rss2','s':show_name})
+searchpage = urllib.request.urlopen(url).read()
 result = xmltodict.parse(searchpage)
 finalstr = []
-if result.has_key('rss') and result['rss'].has_key('channel') and result['rss']['channel'].has_key('item'):
+if 'rss' in result and 'channel' in result['rss'] and 'item' in result['rss']['channel']:
 	for episode in result['rss']['channel']['item']:
 		epilinks = html.fromstring(episode['content:encoded'])
 		links = []
@@ -22,7 +24,7 @@ if result.has_key('rss') and result['rss'].has_key('channel') and result['rss'][
 				links.append(extract_download_link(downlink.get("href")));
 		finalstr.append({'title':episode['title'], 'link':links})
 	[webbrowser.open(url,0,True) for url in finalstr[0]['link']]
-	print finalstr
+	print(finalstr)
 else:
-	print 'no result found'
-exit();
+	print('no result found')
+exit()
