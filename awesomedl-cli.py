@@ -25,7 +25,7 @@ if 'rss' in result and 'channel' in result['rss'] and 'item' in result['rss']['c
                 links.append(extract_download_link(downlink.get("href")));
         finalstr.append({'title': episode['title'], 'link': links})
     [webbrowser.open(url, 0, True) for url in finalstr[0]['link']]
-    print(finalstr)
+    #print(finalstr)
 else:
-    print('no result found')
+    print('No result found')
 exit()
