@@ -12,7 +12,7 @@ def extract_download_link(link):
 
 
 show_name = six.moves.input("Please enter Show name: ")
-url = "http://awesomedl.ru/?" + urllib.parse.urlencode({'feed': 'rss2', 's': show_name})
+url = "http://awesomedl.ru/?" + urllib.parse.urlencode({'feed': 'rss2', 's': show_name.replace(' ','.')})
 searchpage = urllib.request.urlopen(url).read()
 result = xmltodict.parse(searchpage)
 finalstr = []
