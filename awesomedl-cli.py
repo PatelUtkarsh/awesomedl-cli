@@ -7,7 +7,7 @@ from lxml import html
 
 
 def extract_download_link(link):
-    start = link.find('url/') + 4
+    start = link.find('https')
     return link[start:]
 
 
