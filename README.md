@@ -7,3 +7,11 @@ Install dependencies (preferably in an virtualenv) using the following command :
 ```
 pip install -r requirements.txt
 ```
+
+##Using
+
+```
+python awesomedl-cli.py "My Awesome Show Name"
+```
+
+If you don't pass show name it will ask it.

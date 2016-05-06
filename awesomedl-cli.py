@@ -1,3 +1,4 @@
+import sys
 import six.moves.urllib as urllib
 import six
 import re
@@ -9,9 +10,11 @@ from lxml import html
 def extract_download_link(link):
     start = link.find('https')
     return link[start:]
-
-
-show_name = six.moves.input("Please enter Show name: ")
+print sys.argv[1]
+if len(sys.argv) <= 1:
+    show_name = six.moves.input("Please enter Show name: ")
+else:
+    show_name = sys.argv[1]
 url = "http://awesomedl.ru/?" + urllib.parse.urlencode({'feed': 'rss2', 's': show_name.replace(' ','.')})
 searchpage = urllib.request.urlopen(url).read()
 result = xmltodict.parse(searchpage)
