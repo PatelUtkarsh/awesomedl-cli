@@ -10,7 +10,6 @@ from lxml import html
 def extract_download_link(link):
     start = link.find('https')
     return link[start:]
-print sys.argv[1]
 if len(sys.argv) <= 1:
     show_name = six.moves.input("Please enter Show name: ")
 else:
