@@ -1,4 +1,4 @@
-#Awesomedl-cli [deprecated]
+#Awesomedl-cli [deprecated] [not-working]
 
 Awesomedl no longer posts any updates.
 
